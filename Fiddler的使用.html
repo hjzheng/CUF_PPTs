@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>Fiddler的使用</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>使用Fiddler提高工作效率</h2>
+            <p>BY HaoJu</p>
+        </section>
+
+        <section>
+            <h2>什么是Fiddler?</h2>
+            <div>官方地址:<a href="http://www.telerik.com/fiddler">http://www.telerik.com/fiddler</a></div>
+            <p>
+                Fiddler是最强大最好用的Web调试工具之一，它能记录所有客户端和服务器的http和https请求，允许你监视，设置断点，甚至修改输入输出数据. 使用Fiddler无论对Dev还是QA来说，都有很大的帮助。(千万不要告诉QA，要不然Dev会死的很惨，开个玩笑)
+            </p>
+        </section>
+
+        <section>
+            <h2>Fiddler原理</h2>
+            <figure>
+                <img src="./img/fiddler_1.png"/>
+            </figure>
+            <p>
+                说白了, Fiddler就是夹在客户端和服务器端的一个代理, 劫持http请求和返回，从而达到双向欺骗效果
+            </p>
+        </section>
+
+        <section>
+           <h2>Fiddler中Dev常用功能</h2>
+           <ul>
+               <li>设置断点修改Request请求参数</li>
+               <li>设置断点修改Response返回</li>
+               <li>创建AutoResponder规则</li>
+           </ul>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ##设置断点修改Request请求参数
+                在Fiddler命令行中执行
+                ```shell
+                bpu  http://9.111.244.79:8080/platform/j_spring_security_check
+                ```
+                重新登录HPC, 你会发现该请求被劫持，然后在Inspectors中修改登录的用户名和密码
+                可以使用下面命令取消断点
+                ```shell
+                bpu
+                ```
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ##设置断点修改Response返回
+                在Fiddler命令行中执行
+                ```shell
+                bpafter http://9.111.244.79:8080/platform/pcm/networks/getNetworkSummary.action
+                ```
+                在该页面重新执行该请求，在raw中修改JSON数据，以达到自己的目的
+                可以使用下面命令取消断点
+                ```shell
+                bpafter
+                ```
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ##创建AutoResponder规则
+                这个功能类似于chrome dev tools的workspace功能，只不过它不仅可以替换js文件，也可以替换任何http请求的返回。
+                在AutoResponder中建立相应的规则即可，即可替换文件，又可以模拟404,500等服务器返回状态。
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ##扩展阅读：
+
+                - [Fiddler教程][0]
+                - [Fiddler快捷命令][1]
+                - [Fiddler简单的并发和安全测试][3]
+
+                [0]:http://www.cnblogs.com/TankXiao/archive/2012/02/06/2337728.html
+                [1]:http://www.telerik.com/fiddler
+                [2]:http://www.xuanfengge.com/fiddler2-shortcut-command-tutorial-translation.html
+                [3]:http://www.justwinit.cn/post/4605/
+            </script>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <h3>2014-09-01</h3>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
