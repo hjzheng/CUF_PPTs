@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>CSS3 2D Transform</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>CSS3 2D Transform</h2>
+            <p>BY HaoJu</p>
+        </section>
+
+        <section>
+            <h2>2D Transform</h2>
+            <p>
+                通过 CSS3 2D转换, 我们能够对元素进行移动、缩放、转动、拉长或拉伸。
+            </p>
+            <img src="img/transform-1.png">
+        </section>
+
+        <section>
+            <h2>如何Transform</h2>
+            <p>CSS3 是通过 **transform** 属性实现2D变换。</p>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+        selector {
+          transform: transform-function transform-function ...
+        }
+            </code></pre>
+        </section>
+        <section data-markdown>
+            <script type="text/template">
+                ## 常用2D变换函数:
+
+                - translate() 位移函数
+                - rotate() 旋转函数
+                - scale() 缩放函数
+                - skew()  扭曲函数
+                - matrix() 矩阵函数
+            </script>
+        </section>
+
+        <section>
+            <h2>translate函数</h2>
+            <p>使用translate()函数，对元素进行位置移动</p>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+div {
+   -ms-transform: translate(50px,100px); /* IE 9 */
+   -webkit-transform: translate(50px,100px); /* Chrome, Safari, Opera */
+   transform: translate(50px,100px);
+}
+            </code></pre>
+            <img src="img/transform-2.png" style="width: 350px;">
+        </section>
+
+        <section>
+            <h2>rotate函数</h2>
+            <p>使用rotate()函数，对元素进行旋转</p>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+    div {
+        -ms-transform: rotate(30deg); /* IE 9 */
+        -webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+        transform: rotate(30deg);
+    }
+            </code></pre>
+            <img src="img/transform-3.png" style="width: 350px;">
+        </section>
+
+        <section>
+            <h2>scale函数</h2>
+            <p>使用scale()函数，对元素进行缩放</p>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+    div {
+        -ms-transform: scale(2,4); /* IE 9 */
+        -webkit-transform: scale(2,4); /* Chrome, Safari, Opera */
+        transform: scale(2,4);
+    }
+            </code></pre>
+            <img src="img/transform-4.png" style="width: 350px;">
+        </section>
+
+        <section>
+            <h2>skew函数</h2>
+            <p>使用skew()函数，对元素进行扭曲</p>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+    div {
+        -ms-transform: skew(30deg,20deg); /* IE 9 */
+        -webkit-transform: skew(30deg,20deg); /*Chrome, Safari, Opera*/
+        transform: skew(30deg,20deg);
+    }
+            </code></pre>
+            <img src="img/transform-6.png" style="width: 350px;">
+        </section>
+
+        <section>
+            <h2>matrix函数</h2>
+            <p>什么是Matrix?</p>
+            <img src="img/transform-5.png">
+        </section>
+
+        <section>
+            <h2>2D 矩阵变换方程</h2>
+            <img src="img/transform-7.png" style="width: 400px;" >
+            <div>想了解更多
+                <a href="http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/">
+                    css3-matrix-transform
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>推导变换公式(兼容IE8)</h2>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+            CSS3  matrix(1,0,0,1,0,0)
+                  matrix(a,b,c,d,e,f)
+
+            IE8   progid:DXImageTransform.Microsoft.Matrix
+                  (M11=1, M12=0,M21=0,M22=1,SizingMethod='auto expand');
+                  M11 == a
+                  M12 == c
+                  M21 == b
+                  M22 == d
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>推导变换公式</h2>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+                //矩阵实现位移(disX和disY为偏移量)
+                x位移: e = e + disX;
+                y位移: f = f + disY;
+
+                //矩阵实现缩放(x,y为缩放倍数)
+                x轴缩放: a = x*a; c=x*c;  e=x*e;
+                y轴缩放: b = y*b; d=y*d;  f=y*f;
+
+                //矩阵实现扭曲(xDeg,yDeg为扭曲角度)
+                c = Math.tan(xDeg/180*Math.PI);
+                b = Math.tan(yDeg/180*Math.PI);
+
+                //矩阵实现旋转(deg为旋转角度)
+                a = Math.cos(deg/180*Math.PI);
+                b = Math.sin(deg/180*Math.PI);
+                c = -Math.sin(deg/180*Math.PI);
+                d = Math.cos(deg/180*Math.PI);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>transform 兼容IE8</h2>
+            <div><a href="http://www.useragentman.com/IETransformsTranslator/">IETransformsTranslator</a></div>
+            <img src="img/transform-8.png">
+        </section>
+
+        <section>
+            <h2>transform-origin</h2>
+            <div>通过它设置旋转起点</div>
+            <pre><code data-trim contenteditable style="font-size: 24px; margin-top: 10px;">
+    div {
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -ms-transform-origin: 20% 40%; /* IE 9 */
+        -webkit-transform: rotate(45deg); /*Chrome, Safari, Opera*/
+        -webkit-transform-origin: 20% 40%; /*Chrome, Safari, Opera*/
+        transform: rotate(45deg);
+        transform-origin: 20% 40%;
+    }
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>transform-origin Example</h2>
+            <a href="http://jsfiddle.net/hjzheng/UjuT5/2/">http://jsfiddle.net/hjzheng/UjuT5/2/</a>
+        </section>
+
+        <section>
+            <h2>transform在RBAC中应用</h2>
+            <img src="img/transform-9.png">
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ##总结
+                ###在div元素中实现文字旋转居中
+                - step1 写两个嵌套div(外层相对定位，内层绝对定位),外层的高是内层的宽,外层的宽是内层的高
+                - step2 使内层div文字居中,可选,通过left,top调整内层div的位置
+                - step3 通过调整内层div的transform-origin, 以它为旋转中心，进行旋转
+            </script>
+        </section>
+
+
+        <section data-markdown>
+            <script type="text/template">
+                ##扩展阅读：
+
+                - [W3Cschool Transform教程][3]
+                - [Transform Example1][4]
+                - [Transform Example2][5]
+                - [2D矩阵变换原理][2]
+                - [矩阵函数的使用 Example][0]
+
+                [0]:http://jsfiddle.net/hjzheng/xz4DG/2/
+                [1]:http://www.cnblogs.com/Clingingboy/archive/2010/10/17/1853559.html
+                [2]:http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/
+                [3]:http://www.w3school.com.cn/css3/css3_2dtransform.asp
+                [4]:http://jsfiddle.net/hjzheng/BJU3P/
+                [5]:http://jsfiddle.net/hjzheng/UjuT5/2/
+                [6]:http://www.gbtags.com/gb/share/2388.htm
+            </script>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <h3>2014-09-07</h3>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
