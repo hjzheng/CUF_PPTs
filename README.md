@@ -9,10 +9,10 @@ CUF_PPTs
 
 **PPT List:**
 
-- 前端开发工具介绍([基于北河PPT][1])
-- 浏览器渲染过程
-- Fiddler的使用
-- CSS3 2D Transform
+- [前端开发工具介绍][2] ([基于北河PPT][1])
+- [浏览器渲染过程][3]
+- [Fiddler的使用][4]
+- [CSS3 2D Transform][5]
 
 **使用方式:**
 
@@ -26,3 +26,7 @@ git clone https://github.com/hjzheng/CUF_PPTs
 
 [0]:https://github.com/hakimel/reveal.js
 [1]:https://github.com/hjzheng/bh-share-repo
+[2]:http://get-set.cn/CUF_PPTs/%23U524d%23U7aef%23U5f00%23U53d1%23U5de5%23U5177%23U4ecb%23U7ecd.html#/
+[3]:http://get-set.cn/CUF_PPTs/%23U6d4f%23U89c8%23U5668%23U6e32%23U67d3%23U8fc7%23U7a0b.html#/
+[4]:http://get-set.cn/CUF_PPTs/Fiddler%23U7684%23U4f7f%23U7528.html#/
+[5]:http://get-set.cn/CUF_PPTs/CSS3-2D-Transform.html#/
