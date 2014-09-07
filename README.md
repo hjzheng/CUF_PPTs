@@ -13,7 +13,7 @@ CUF_PPTs
 - [浏览器渲染过程][3]
 - [Fiddler的使用][4]
 - [CSS3 2D Transform][5]
-- 书写高效的CSS
+- [书写高效的CSS][6]
 
 **使用方式:**
 
@@ -31,3 +31,4 @@ git clone https://github.com/hjzheng/CUF_PPTs
 [3]:http://get-set.cn/CUF_PPTs/%23U6d4f%23U89c8%23U5668%23U6e32%23U67d3%23U8fc7%23U7a0b.html#/
 [4]:http://get-set.cn/CUF_PPTs/Fiddler%23U7684%23U4f7f%23U7528.html#/
 [5]:http://get-set.cn/CUF_PPTs/CSS3-2D-Transform.html#/
+[6]:http://get-set.cn/CUF_PPTs/%E4%B9%A6%E5%86%99%E9%AB%98%E6%95%88%E7%9A%84CSS.html#/
