@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>书写高效的CSS</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>书写高效的CSS</h2>
+            <p>BY Hao Ju Zheng</p>
+            <p>github: <a href="https://github.com/hjzheng">https://github.com/hjzheng</a></p>
+        </section>
+
+        <section>
+            <h2>浏览器样式匹配规则</h2>
+            <ul>
+                <li>关键选择器</li>
+                <li>从右往左</li>
+            </ul>
+        </section>
+
+        <section>
+            <section>
+                <h2>关键选择器</h2>
+                <p>
+                    选择器的最后面的部分即为关键选择器(即用来匹配目标元素的那部分,而不是该元素的父辈元素)
+                </p>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height32px; margin-top: 10px;">
+                #header, a img, h1 + [title] {
+                   ... ...
+                }
+                //关键选择器分别为 #header, img, [title]
+                </code></pre>
+             </section>
+             <section>
+                <h2>拆分样式</h2>
+                <p>
+                    为了提高样式匹配效率,浏览器根据关键选择器将样式拆分为四种类型,放置到4张不同的哈希表里:
+                </p>
+                <ul>
+                    <li>ID规则</li>
+                    <li>Class规则</li>
+                    <li>标签规则</li>
+                    <li>通用规则(不符合上面的都是)</li>
+                </ul>
+             </section>
+             <section>
+                 <h2>ID规则</h2>
+                 <p>这一类别包含了那些将 ID 选择器作为关键选择器的规则</p>
+                 <pre><code data-trim contenteditable style="font-size: 24px; line-height:32px; margin-top: 10px;">
+     button#backButton {…} /* This is an ID-categorized rule */
+     #urlBar[type="search"] {…} /* This is an ID-categorized rule */
+     table > tr > td#myCell:active {…} /*This is an ID-categorized rule*/
+                 </code></pre>
+             </section>
+            <section>
+                <h2>Class规则</h2>
+                <p>如果一个规则将一个 class 作为它的关键选择器,那么它就属于该类别.</p>
+                 <pre><code data-trim contenteditable style="font-size: 24px; line-height:32px; margin-top: 10px;">
+             button.settingButton {…} /* A class-based rule */
+             .fancyText {…}	/* A class-based rule */
+             ul > .menu-left[checked="true"] {…} /* A class-based rule */
+                 </code></pre>
+            </section>
+            <section>
+                <h2>标签规则</h2>
+                <p>如果既没有 class 也没有 ID 来作为关键选择器，那么接下来的候选者就是 标签 类别.如果一条规则将一个标签作为它的关键选择器,那么这条规则就属于该类别.</p>
+                 <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+             table {…} /* A tag-based rule */
+             ul > li {…} /* A tag-based rule */
+             input[type="checkbox"] {…} /* A tag-based rule */
+                 </code></pre>
+            </section>
+            <section>
+                <h2>通用规则</h2>
+                <p>不属于上面那些类别的规则都属于这个类别</p>
+                 <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+                 [hidden="true"] {…} /* A universal rule */
+                 * {…}		/* A universal rule */
+                 ul > [title="hehe"] {…} /* A universal rule */
+                 </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <h2>从右向左</h2>
+            <p>
+                浏览器读取你的选择器, 遵循的原则是从选择器的右边到左边读取.
+                先从关键选择器开始匹配规则, 然后左移, 匹配祖先, 成功, 持续左移, 直到和规则匹配, 或者是因为不匹配而放弃。
+                所以,对于一个给定的元素, 需要匹配的规则越少, 样式的解析就会越快.
+            </p>
+        </section>
+
+        <section>
+            <section>
+                <h2>高效CSS指南</h2>
+                <ul>
+                    <li>避免通用规则</li>
+                    <li>不要用标签名或 classes 来限制 ID 规则</li>
+                    <li>不要用标签名限制 class 规则</li>
+                    <li>尽量使用最具体的类别</li>
+                    <li>避免后代选择器</li>
+                    <li>属于标签类别的规则永远不要包含子选择器</li>
+                    <li>在使用子选择器的地方想想为什么</li>
+                    <li>依赖继承</li>
+                </ul>
+            </section>
+            <section>
+                <h2>避免通用规则</h2>
+                <p>请确保规则不以通用类型作为结束！</p>
+            </section>
+            <section>
+                <h2>不要用标签名或 classes 来限制 ID 规则</h2>
+                <p>如果规则的关键选择器为 ID 选择器，则没有必要为规则增加标签名。因为 ID 是唯一的，增加标签只会拖慢匹配过程</p>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+                    div#header /* bad */
+                    .first#list /* bad */
+                    #header /* good */
+                    #list /* good */
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>不要用标签名限制 class 规则</h2>
+                <p>虽然在同一页面能够多次使用 class，但它仍然比标签名更独特</p>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+                    div.header /* bad */
+                    .header /* good */
+                    ul > li.first /* bad */
+                    ul > .first /* good */
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>尽量使用最具体的类别</h2>
+                <p>解析速度变慢的最大原因就是绝大多数规则都落进了标签类别中。为元素增加 class，我们就可以进一步的将这些规则划分到 Class 类别中，这将减少用于匹配标签的时间。</p>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+                    table[mailfolder="true"] > tr> td {…}
+                    .treecell-mailfolder {…}
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>避免后代选择器</h2>
+                <p>后代选择器是 CSS 中耗费最昂贵的选择器。 它的耗费是极其昂贵的—特别是当选择器在标签或通用类别中</p>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+                    table tr td {…} /* bad */
+                    table > tr > td {…} /* good */
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>属于标签类别的规则永远不要包含子选择器</h2>
+                <p>标签类别的规则中避免使用子选择器。否则的话，在该元素出现的所有地方，匹配时间都将极大延长(特别是当规则很可能会被匹配) 。</p>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+                    table > tr > td {…} /* bad */
+                    .table-td {…} /* good */
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>依赖继承</h2>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+                    ul > li {list-style:none;}
+                    ul {list-style:none;}
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <h2>如何测试？</h2>
+            <p>Chrome30(不包含30)以下的版本包含有CSS selector profile可以对选择器进行性能测试</p>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ##扩展阅读：
+
+                - [profiling-css-for-fun-and-profit-optimization-notes][1]
+                - [CSS Performance][2]
+
+                [0]:https://developer.mozilla.org/zh-CN/docs/Web/CSS/Writing_Efficient_CSS
+                [1]:http://perfectionkills.com/profiling-css-for-fun-and-profit-optimization-notes/
+                [2]:https://dl.dropboxusercontent.com/u/39519/talks/cssperf/index.html
+            </script>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <h3>2014-09-13</h3>
+                <p>如果你喜欢,请<a href="https://github.com/hjzheng/CUF_PPTs">star</a>我</p>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
