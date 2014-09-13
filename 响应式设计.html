@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>responsive web design</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <style>
+        .table {
+            width: 100%;
+            text-align: center;
+            background: #eeeeee;
+            color: #333333;
+            font-size: 18px !important;
+        }
+
+        .table  tr td {
+            border-top: 2px dashed #bbb;
+            padding-left:10px;
+        }
+
+        .table  tr th {
+            padding-left:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>响应式设计</h2>
+            <p>BY Hao Ju Zheng</p>
+            <p>github: <a href="https://github.com/hjzheng">https://github.com/hjzheng</a></p>
+        </section>
+
+        <section>
+            <h2>什么是响应式设计?</h2>
+            <p>随着用户浏览网页的设备越来越复杂(手机,平板,电脑), 之前只针对大尺寸屏幕的web设计,已经不太适合了,我们的设计需在不同设备上,做出不同响应，保证用户良好的体验，这就是响应式设计。</p>
+        </section>
+        
+        <section>
+            <h2>响应式设计的真实案例</h2>
+            <ul>
+                <li><a href="http://colly.com">http://colly.com</a></li>
+                <li><a href="http://foodsense.is">http://foodsense.is</a></li>
+                <li><a href="http://www.sony.com/">http://www.sony.com/</a></li>
+            </ul>
+            <p>你可以通过改变浏览器窗口的大小或chrome dev tools的模拟器，去模拟不同设备尺寸，体验什么是响应式设计。</p>
+        </section>
+
+        <section>
+            <section>
+                <h2>相关概念</h2>
+                <ul>
+                    <li>viewport(可视窗口)</li>
+                    <li>resolution(像素密度)</li>
+                    <li>CSS pixel</li>
+                </ul>
+            </section>
+            <section>
+                <h2>viewport</h2>
+                <p>可视窗口, 是在meta元素中定义的，其主要作用是设置Web页面适应移动设备的屏幕大小。
+                    移动设备通常会提供viewport默认设置,  为没有针对移动设备的网站显示看起来不错，但是响应式设计需要重新定义viewport.</p>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px; font-family: consolas; padding: 0px; ">
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                    initial-scale=1,user-scalable=0&quot; /&gt;
+    //width指定虚拟窗口的屏幕宽度大小。
+    //height指定虚拟窗口的屏幕高度大小。
+    //initial-scale指定初始缩放比例。
+    //maximum-scale指定允许用户缩放的最大比例。
+    //minimum-scale指定允许用户缩放的最小比例。
+    //user-scalable指定是否允许手动缩放。
+                </code></pre>
+            </section>
+            <section>
+                <h2>resolution</h2>
+                <p>屏幕像素密度,在一个物理尺寸上所能显示的像素数量,一般使用dpi(dots per inch)来表示,每英寸像素数。</p>
+                <table width="100%" style="text-align: center;background: #eeeeee;color: #333333">
+                    <tr>
+                        <td>iphone3G</td>
+                        <td>162dpi</td>
+                        <td>320px * 480px</td>
+                    </tr>
+                    <tr>
+                        <td>iphone4</td>
+                        <td>326dpi</td>
+                        <td>640px * 960px</td>
+                    </tr>
+                </table>
+                <div>移动设备的像素密度表:<a href="https://github.com/h5bp/mobile-boilerplate/wiki/Mobile-Matrices">Mobile-Matrices</a></div>
+            </section>
+            <section>
+                <h2>CSS pixel</h2>
+                <p>CSS pixel是一个相对值, 例如 如果10X10 pixel div 在iphone3G显示为10X10 pixel，那么在iphone4上显示为20X20 pixel, 因为为了保持一致，高密度屏对CSS pixel进行了放大, 苹果视网膜屏设备默认放大倍数(device pixel ratio - 设备像素比)为2。</p>
+                <div><a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/">了解更多</a></div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>媒体查询(Media Queries)</h2>
+                <p>媒体查询是整个响应式设计的关键,  CSS3中加入了Media Queries模块，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。</p>
+            </section>
+
+            <section>
+                <h2>添加媒体查询</h2>
+                <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px; font-family: consolas; padding: 0px; ">
+    //link 方式
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;(max-width:480px)&quot;
+                                           href=&quot;mobile.css&quot;&gt;
+    //CSS样式
+    @media (max-width:480px) {
+        ... ...
+    }
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>媒体类型(Media Type)</h2>
+                <table class="table">
+                    <tr>
+                        <th>all</th>
+                        <th>所有设备</th>
+                    </tr>
+                    <tr>
+                        <td>screen</td>
+                        <td>电脑显示器</td>
+                    </tr>
+                    <tr>
+                        <td>print</td>
+                        <td>打印用纸或打印预览视图</td>
+                    </tr>
+                    <tr>
+                        <td>handled</td>
+                        <td>便携设备</td>
+                    </tr>
+                    <tr>
+                        <td>tv</td>
+                        <td>电视机类型的设备</td>
+                    </tr>
+                    <tr>
+                        <td>speech</td>
+                        <td>语音和音频合成器</td>
+                    </tr>
+                    <tr>
+                        <td>braille</td>
+                        <td>盲人用点字法触觉回馈设备</td>
+                    </tr>
+                    <tr>
+                        <td>embossed</td>
+                        <td>盲人打印机</td>
+                    </tr>
+                    <tr>
+                        <td>projection</td>
+                        <td>各种投影设备</td>
+                    </tr>
+                    <tr>
+                        <td>tty</td>
+                        <td>使用固定密度字母栅格的媒介，比如电传打字机和终端</td>
+                    </tr>
+                </table>
+                <div><a href="http://www.w3.org/TR/css3-mediaqueries/#media1">了解更多</a></div>
+            </section>
+
+            <section>
+                <h2>媒体特性-1(Media Feature)</h2>
+                <table class="table">
+                    <tr>
+                        <th>特性</th>
+                        <th>可指定的值</th>
+                        <th>是否允许使用min/max前缀</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>带单位的长度数值</td>
+                        <td>允许</td>
+                        <td>可视窗口的宽度</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>带单位的长度数值</td>
+                        <td>允许</td>
+                        <td>可视窗口的高度</td>
+                    </tr>
+                    <tr>
+                        <td>device-width</td>
+                        <td>带单位的长度数值</td>
+                        <td>允许</td>
+                        <td>设备物理屏幕分辨率的宽度值</td>
+                    </tr>
+                    <tr>
+                        <td>device-height</td>
+                        <td>带单位的长度数值</td>
+                        <td>允许</td>
+                        <td>设备屏幕分辨率的高度值</td>
+                    </tr>
+                    <tr>
+                        <td>orientation</td>
+                        <td>只能指定两个值:portrait或landscape</td>
+                        <td>不允许</td>
+                        <td>浏览器窗口的方向是纵向还是横向，当窗口的高度值大于等于高度值时，该特性值为portrait</td>
+                    </tr>
+                    <tr>
+                        <td>aspect-ratio</td>
+                        <td>比例值，例如：16/9</td>
+                        <td>允许</td>
+                        <td>浏览器窗口的纵横比，比例值为浏览器窗口的宽度值/高度值</td>
+                    </tr>
+                    <tr>
+                        <td>device-aspect-ratio</td>
+                        <td>比例值，例如：16/9</td>
+                        <td>允许</td>
+                        <td>设备屏幕分辨率的纵横比，比例值为设备屏幕分辨率的宽度值/高度值</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>媒体特性-2(Media Feature)</h2>
+                <table class="table">
+                    <tr>
+                        <th>特性</th>
+                        <th>可指定的值</th>
+                        <th>是否允许使用min/max前缀</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>整数值</td>
+                        <td>允许</td>
+                        <td>设备使用多少位的颜色值，如果不是彩色设备，该值为0</td>
+                    </tr>
+                    <tr>
+                        <td>color-index</td>
+                        <td>整数值</td>
+                        <td>允许</td>
+                        <td>色彩表中的色彩数</td>
+                    </tr>
+                    <tr>
+                        <td>monochrome</td>
+                        <td>整数值</td>
+                        <td>允许</td>
+                        <td>单色帧缓冲器中每像素的字节数</td>
+                    </tr>
+                    <tr>
+                        <td>resolution</td>
+                        <td>分辨率值，譬如300dpi</td>
+                        <td>允许</td>
+                        <td>设备的分辨率</td>
+                    </tr>
+                    <tr>
+                        <td>scan</td>
+                        <td>只能指定两个值：progressive或interlace</td>
+                        <td>不允许</td>
+                        <td>电视机类型设备的扫描方式，progressive表示逐行扫描，interlace表示隔行扫描</td>
+                    </tr>
+                    <tr>
+                        <td>grid</td>
+                        <td>只能指定两个值:0或1</td>
+                        <td>不允许</td>
+                        <td>设备是基于栅格还是基于位图。基于栅格时该值为1，否则该值为0</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>操作符(and, or, not)</h2>
+                <p>用于连接媒体特性和媒体特性表达式</p>
+                 <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px; font-family: consolas; padding: 0px; ">
+     /* and */
+     @media screen and (min-width: 480px) and (max-width: 767px) {
+         body{
+            background: #ce33eb;
+         }
+     }
+
+     /* , 相当于or */
+     @media screen and ( orientation: landscape ),
+                     screen and ( min-width: 700px ) {
+         body{
+            background: #c0392b;
+         }
+     }
+
+     /* 否定后面所有的条件 */
+     @media not screen and ( max-width:959px ){
+         body{
+            background: #ccc;
+         }
+     }
+                 </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>应用媒体查询</h2>
+                <ul>
+                    <li>响应式布局</li>
+                    <li>响应式导航</li>
+                    <li>响应式图片</li>
+                    <li>slide例子</li>
+                </ul>
+            </section>
+            <section>
+                <h2>响应式布局</h2>
+                <img src="img/response-layout.png"> 
+            </section>
+            <section>
+                <h2>响应式布局(code)</h2>
+                 <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px; font-family: consolas; padding: 0px; ">
+     @media ( min-width: 1200px ){
+         .container{
+             width: 1170px;
+         }
+         #mainbody{
+            width: 770px;
+            margin-right: 30px;
+         }
+         #sidebar{
+            width: 370px;
+         }
+     }
+
+     @media ( max-width: 959px){
+         .container{
+            width: 100%;
+         }
+         #mainbody{
+             width: 67%;
+         }
+         #sidebar{
+            width: 30%;
+            float: right;
+         }
+     }
+
+     @media ( max-width: 767px ){
+         #mainbody, #sidebar{
+             float: none;
+             width: 100%;
+         }
+     }
+
+                 </code></pre>
+            </section>
+            <section>
+                <h2>响应式导航</h2>
+                <img src="img/response-nav.png">
+            </section>
+            <section>
+                <h2>响应式图片</h2>
+                <ul>
+                    <li>图片自适应大小</li>
+                    <li>根据设备的宽度选择不同质量的图片</li>
+                </ul>
+                <div>插件<a href="https://github.com/scottjehl/picturefill">picturefill</a></div>
+            </section>
+            <section>
+                <h2>Slide例子</h2>
+            </section>
+        </section>
+        <section>
+            <h2>响应式框架</h2>
+            <ul>
+                <li><a href="http://www.bootcss.com/">bootstrap</a></li>
+                <li><a href="http://foundation.zurb.com/">foundation</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>响应式资源</h2>
+            <ul>
+                <li><a href="http://mediaqueri.es/">mediaqueries</a></li>
+                <li><a href="http://responsive.cn/">responsive.cn</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <h3>2014-09-14</h3>
+                <p>如果你喜欢,请<a href="https://github.com/hjzheng/CUF_PPTs">star</a>我</p>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
