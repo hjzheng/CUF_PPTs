@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+        <div class="row">
+            <div class="col-xs-12"><h2>警告框Alert</h2></div>
+            <div class="col-xs-12">
+                <code><pre style="font-size:22px;" class="pre-scrollable">
+&lt;div class=&quot;alert alert-success&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+                </pre></code>
+            </div>
+            <div class="col-xs-12">
+<div class="alert alert-success" role="alert">Well done! You successfully read this important alert message.</div>
+<div class="alert alert-info" role="alert">Heads up! This alert needs your attention, but it's not super important.</div>
+<div class="alert alert-warning" role="alert">Warning! Better check yourself, you're not looking too good.</div>
+<div class="alert alert-danger" role="alert">Oh snap! Change a few things up and try submitting again.</div>
+            </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12"><h2>可关闭的警告框（依赖JQuery插件）</h2></div>
+            <div class="col-xs-12">
+                <code><pre style="font-size:22px;" class="pre-scrollable">
+&lt;div class=&quot;alert alert-warning alert-dismissible&quot; role=&quot;alert&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;&lt;/button&gt;
+  &lt;strong&gt;Warning!&lt;/strong&gt; Better check yourself, you're not looking too good.
+&lt;/div&gt;
+                </pre></code>
+            </div>
+            <div class="col-xs-12">
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+            </div>
+        </div>
+    
+    
+    <div class="row">
+          <div class="col-xs-12"><h2>警告框中的链接</h2></div>
+            <div class="col-xs-12">
+                <code><pre style="font-size:22px;" class="pre-scrollable">
+&lt;div class=&quot;alert alert-success&quot; role=&quot;alert&quot;&gt;Well done! You successfully read
+  &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;this important alert message&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;Well done! You successfully read
+  &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;this important alert message&lt;/a&gt;
+&lt;/div&gt;
+                </pre></code>
+            </div>
+            <div class="col-xs-12">
+<div class="alert alert-success" role="alert">Well done! You successfully read
+  <a href="#" class="alert-link">this important alert message</a>.
+</div>
+<div class="alert alert-info" role="alert">Well done! You successfully read
+  <a href="#" class="alert-link">this important alert message</a>.
+</div>
+            </div>
+        </div>
+        <div class="row"><div class="col-xs-12"><h3 class="text-center">@Base On Bootstrap</h3></div></div>
+    </div>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
