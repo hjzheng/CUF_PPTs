@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>CUF Knowledge Share</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>CUF Knowledge Share</h2>
+            <p>BY Hao Ju Zheng</p>
+            <p>github: <a href="https://github.com/hjzheng">https://github.com/hjzheng</a></p>
+        </section>
+
+        <section>
+            <h2>Knowledge Share List</h2>
+            <ul>
+                <li>Icon Font</li>
+                <li>Node.js and Express</li>
+                <li>CSS选择器</li>
+                <li>前端开发工具介绍</li>
+                <li>浏览器渲染过程</li>
+                <li>CSS3 2D Transform</li>
+                <li>Chrome dev tools 手机模拟器</li>
+                <li>Google Material Design</li>
+                <li>响应式设计</li>
+                <li><a href="https://github.com/hjzheng/CUF_meeting_knowledge_share/issues">更多分享</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <section>
+                <h2>Icon Font</h2>
+                <p>
+                    Icon font 就是将一套图标集以字体文件的形式封装，并通过 CSS 3 的 @font-face 作为 Web Font 调用。
+                </p>
+                <img src="img/cuf-1.png">
+             </section>
+             <section>
+                <h2>优点</h2>
+                <ul>
+                    <li>轻薄：体积小, 易于书写。</li>
+                    <li>丰满：添加hover，click等状态效果更灵活。</li>
+                    <li>百搭：在不同的分辨率屏幕上适配缩放不失真！</li>
+                    <li>安静：通过base64编码能置于样式表内，从而没有了http请求。</li>
+                </ul>
+             </section>
+             <section>
+                <h2>缺点</h2>
+                <ul>
+                    <li>样式不如图片丰富。但是，有很多场景是用纯色icon。</li>
+                    <li>重构成本相应提高。熟练之后其实也充满乐趣。</li>
+                </ul>
+             </section>
+             <section>
+                 <h2>应用案例</h2>
+                 <p>github,淘宝等网站都在大量使用该技术,另外如bootstrap等一些前端框架已经内置了大量icon font库。</p>
+                 <ul>
+                     <li><a href="http://iconfont.cn/">http://iconfont.cn/</a></li>
+                     <li><a href="https://github.com">https://github.com</a></li>
+                     <li><a href="http://www.bootcss.com/p/simple-icons/">http://www.bootcss.com/p/simple-icons/</a></li>
+                     <li><a href="http://fontawesome.io/">http://fontawesome.io/</a></li>
+                     <li><a href="http://taobao.com">http://taobao.com</a></li>
+                 </ul>
+             </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Node.js and Express</h2>
+                <p>
+                    Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台， 用来方便地搭建快速的 易于扩展的网络应用· Node.js 借助事件驱动， 非阻塞I/O 模型变得轻量和高效， 非常适合 运行在分布式设备 的 数据密集型 的实时应用。
+                    Express 则是基于它的一个web框架。
+                </p>
+                <img src="img/cuf-2.png">
+            </section>
+            <section>
+                <h2>优点</h2>
+                <ul>
+                    <li>RESTful API</li>
+                    <li>单线程</li>
+                    <li>非阻塞IO</li>
+                    <li>事件驱动</li>
+                    <li>前后台一种语言</li>
+                </ul>
+            </section>
+            <section>
+                <h2>缺点</h2>
+                <ul>
+                    <li>不适用计算密集型应用</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>应用案例</h2>
+                <p><a href="http://www.infoq.com/cn/interviews/lk-nodejs-taobao/">关于淘宝对nodeJS的应用</a></p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>CSS选择器</h2>
+                <p>大家在使用CSS选择器的时候，由于考虑浏览器的兼容性，基本上使用的都是些简单的选择器，不但错过一些高级选择器的使用，还错误的认为IE8不支持某些高级选择器，所以希望下面的选择器兼容表格，可以让你大胆的使用某些高级选择器。</p>
+            </section>
+
+            <section>
+                <h2>CSS3兼容表</h2>
+                <p><a href="https://github.com/hjzheng/CUF_meeting_knowledge_share/issues/3" target="_blank">CSS3兼容表</a></p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>前端开发工具介绍</h2>
+                <p>俗话说,工欲善其事,必先利其器。作为一个合格的前端开发者，必须掌握一些开发神器</p>
+            </section>
+            <section>
+                <h2>工具列表</h2>
+                <ul>
+                    <li>Notepad ++</li>
+                    <li>WebStorm</li>
+                    <li>Chrome Dev tools</li>
+                    <li>jsfiddle and jsbin</li>
+                    <li><a href="http://get-set.cn/CUF_PPTs/%23U524d%23U7aef%23U5f00%23U53d1%23U5de5%23U5177%23U4ecb%23U7ecd.html#/">更多细节</a></li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>浏览器渲染过程</h2>
+                <p>作为一个web开发者,你必须要了解你的兄弟--浏览器</p>
+                <p><a href="http://get-set.cn/CUF_PPTs/%23U6d4f%23U89c8%23U5668%23U6e32%23U67d3%23U8fc7%23U7a0b.html#/">浏览器渲染PPT</a></p>
+            </section>
+            <section>
+                <p>通过了解浏览器渲染过程,我们可以减少reflow和repaint,提高页面性能。</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>CSS3 2D Transform</h2>
+                <p>随着新版本浏览器到来, CSS3在实际开发工作中的应用越来越多，这次主要介绍CSS3 2D Transform</p>
+                <p><a href="http://get-set.cn/CUF_PPTs/CSS3-2D-Transform.html#/">CSS3 2D Transform PPT</a></p>
+            </section>
+            <section>
+                <h2>实际应用</h2>
+                <p>在RBAC H-Title Pane中的应用</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Chrome dev tools 手机模拟器</h2>
+                <p>现在用户手中的移动设备越来越多,为移动设备开发网页变得越来越重要，Chrome浏览器便推出了手机模拟器。</p>
+                <p><a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation">chrome dev tools mobile-emulation</a></p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Google Material Design</h2>
+                <p>Google I/O 2014 发布的 Material Design 势必将会成为统一 Android Mobile、Android Table、Desktop Chrome 等全平台设计语言规范，对从业人员意义重大。</p>
+                <p><a href="http://design.1sters.com/">http://design.1sters.com/</a></p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>响应式设计</h2>
+                <p>随着用户浏览网页的设备越来越复杂(手机,平板,电脑), 之前只针对大尺寸屏幕的web设计,已经不太适合了,我们的设计需在不同设备上,做出不同响应，保证用户良好的体验，这就是响应式设计</p>
+            </section>
+            <section>
+                <h2>响应式设计的真实案例</h2>
+                <ul>
+                    <li><a href="https://ace.ng.bluemix.net/">https://ace.ng.bluemix.net/</a></li>
+                    <li><a href="http://colly.com">http://colly.com</a></li>
+                    <li><a href="http://foodsense.is">http://foodsense.is</a></li>
+                    <li><a href="http://www.sony.com">http://www.sony.com</a></li>
+                </ul>
+                <p>你可以通过改变浏览器窗口的大小或chrome dev tools的模拟器，去模拟不同设备尺寸，体验什么是响应式设计。</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <h3>2014-10-23</h3>
+                <p>如果你喜欢,请<a href="https://github.com/hjzheng/CUF_PPTs">star</a>我</p>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
