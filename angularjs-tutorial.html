@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>angularjs tutorial</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>Angularjs Tutorial</h2>
+        </section>
+
+        <section>
+            <h2>Hello AngularJS</h2>
+            <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+        &lt;!doctype html&gt;
+        &lt;html ng-app&gt;
+            &lt;head&gt;
+                &lt;script src=&quot;../angularjs/angular.min.js&quot;&gt;&lt;/script&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                Hello {{'World'}}!
+            &lt;/body&gt;
+        &lt;/html&gt;
+            </code></pre>
+        </section>
+
+       <section data-markdown>
+           <script type="text/template">
+               ### AngularJS应用的解析 (1)
+               AngularJS应用程序的三个组成部分，并解释它们如何映射到模型-视图-控制器设计模式：
+
+               #### 模板（Templates）
+               模板是您用HTML和CSS编写的文件，展现应用的视图。 您可给HTML添加新的元素、属性标记，作为AngularJS编译器的指令。 AngularJS编译器是完全可扩展的，这意味着通过AngularJS您可以在HTML中构建您自己的HTML标记！
+
+               #### 应用程序逻辑（Logic）和行为（Behavior）
+               应用程序逻辑和行为是您用JavaScript定义的控制器。AngularJS与标准AJAX应用程序不同，您不需要另外编写侦听器或DOM控制器，因为它们已经内置到AngularJS中了。这些功能使您的应用程序逻辑很容易编写、测试、维护和理解。
+           </script>
+       </section>
+
+       <section data-markdown>
+           <script type="text/template">
+               ### AngularJS应用的解析 (2)
+
+               #### 模型数据（Data）
+               模型是从AngularJS作用域对象的属性引申的。模型中的数据可能是Javascript对象、数组或基本类型，这都不重要，重要的是，他们都属于AngularJS作用域对象。
+               AngularJS通过作用域来保持数据模型与视图界面UI的双向同步。一旦模型状态发生改变，AngularJS会立即刷新反映在视图界面中，反之亦然。
+           </script>
+       </section>
+
+        <section>
+            <h2>Step 00</h2>
+            <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; ng-app&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;My HTML File&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;bower_components/bootstrap/dist/css/bootstrap.css&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;css/app.css&quot;&gt;
+        &lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+        &lt;p&gt;Nothing here {{'yet' + '!'}}&lt;/p&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ### ng-app
+                ng-app指令标记了AngularJS脚本的作用域，在&lt;html&gt;中添加ng-app属性即说明整个&lt;html&gt;都是AngularJS脚本作用域。开发者也可以在局部使用ng-app指令，如&lt;div ng-app&gt;，则AngularJS脚本仅在该&lt;div&gt;中运行。
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ### AngularJS脚本标签：
+
+                &lt;script src="lib/angular/angular.js"&gt;&lt;/script&gt;
+
+                这行代码载入angular.js脚本，当浏览器将整个HTML页面载入完毕后将会执行该angular.js脚本，angular.js脚本运行后将会寻找含有ng-app指令的HTML标签，该标签即定义了AngularJS应用的作用域。
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                双大括号绑定的表达式：
+
+                &lt;p&gt;Nothing here {{'yet' + '!'}}&lt;/p&gt;
+
+                这行代码演示了AngularJS模板的核心功能——绑定，这个绑定由双大括号{{}}和表达式'yet' + '!'组成。
+
+                这个绑定告诉AngularJS需要运算其中的表达式并将结果插入DOM中，接下来的步骤我们将看到，DOM可以随着表达式运算结果的改变而实时更新。
+
+                AngularJS表达式Angular expression是一种类似于JavaScript的代码片段，AngularJS表达式仅在AngularJS的作用域中运行，而不是在整个DOM中运行。
+            </script>
+        </section>
+
+        <section>
+            <h2>step 01 添加更多的html</h2>
+              <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+      &lt;ul&gt;
+        &lt;li&gt;
+            &lt;span&gt;Nexus S&lt;/span&gt;
+            &lt;p&gt;
+                Fast just got faster with Nexus S.
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;span&gt;Motorola XOOM™ with Wi-Fi&lt;/span&gt;
+            &lt;p&gt;
+                The Next, Next Generation tablet.
+            &lt;/p&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+              </code></pre>
+        </section>
+
+        <section>
+            <h2>step 02 AngularJS模板</h2>
+              <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+      &lt;body ng-controller=&quot;PhoneListCtrl&quot;&gt;
+
+          &lt;ul&gt;
+              &lt;li ng-repeat=&quot;phone in phones&quot;&gt;
+                  &lt;span&gt;{{phone.name}}&lt;/span&gt;
+                  &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
+              &lt;/li&gt;
+          &lt;/ul&gt;
+
+      &lt;/body&gt;
+              </code></pre>
+        </section>
+        <section>
+            <h2>视图和模板</h2>
+            <p>
+                上一页的HTML是一个angularjs的模板
+
+                在AngularJS中，一个视图是模型通过HTML模板渲染之后的映射。这意味着，不论模型什么时候发生变化，AngularJS会实时更新结合点，随之更新视图。
+            </p>
+            <p>
+                这里我们使用ngRepeat指令和两个用花括号包裹起来的AngularJS表达式——{{phone.name}}和{{phone.snippet}}。
+                在li标签里面的ng-repeat="phone in phones"语句是一个AngularJS迭代器。这个迭代器告诉AngularJS用第一个li标签作为模板为列表中的每一部手机创建一个li元素。
+            正如我们在第0步时学到的，包裹在phone.name和phone.snippet周围的花括号标识着数据绑定。和常量计算不同的是，这里的表达式实际上是我们应用的一个数据模型引用，这些我们在PhoneListCtrl控制器里面都设置好了。
+            </p>
+        </section>
+        <section>
+            <h2>模型和控制器</h2>
+            <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+            function PhoneListCtrl($scope) {
+                $scope.phones = [
+                    {"name": "Nexus S",
+                    "snippet": "Fast just got faster with Nexus S."},
+                    {"name": "Motorola XOOM™ with Wi-Fi",
+                    "snippet": "The Next, Next Generation tablet."},
+                    {"name": "MOTOROLA XOOM™",
+                    "snippet": "The Next, Next Generation tablet."}
+                ];
+            }
+            </code></pre>
+        </section>
+
+        <section>
+            <p>
+                PhoneListCtrl——控制器方法的名字（在JS文件controllers.js中）
+                和 body 标签里面的ngController指令的值相匹配。
+                手机的数据此时与注入到我们控制器函数的作用域（$scope）相关联。
+                当应用启动之后，会有一个根作用域被创建出来，
+                而控制器的作用域是根作用域的一个典型后继。
+                这个控制器的作用域对所有&lt;body ng-controller="PhoneListCtrl"&gt;标记内部的数据绑定有效。
+            </p>
+        </section>
+
+        <section>
+            <h2>step 03 迭代器</h2>
+            <pre><code data-trim contenteditable style="font-size: 24px; line-height: 32px; margin-top: 10px;">
+    &lt;div class=&quot;container-fluid&quot;&gt;
+        &lt;div class=&quot;row-fluid&quot;&gt;
+            &lt;div class=&quot;span2&quot;&gt;
+            &lt;!--Sidebar content--&gt;
+
+            Search: &lt;input ng-model=&quot;query&quot;&gt;
+
+            &lt;/div&gt;
+            &lt;div class=&quot;span10&quot;&gt;
+            &lt;!--Body content--&gt;
+
+                &lt;ul class=&quot;phones&quot;&gt;
+                    &lt;li ng-repeat=&quot;phone in phones | filter:query&quot;&gt;
+                    {{phone.name}}
+                    &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>filter</h2>
+            <p>添加了一个input标签，并且使用AngularJS的$filter函数来处理ngRepeat指令的输入。</p>
+            <p>数据绑定： 这是AngularJS的一个核心特性。当页面加载的时候，AngularJS会根据输入框的属性值名字，将其与数据模型中相同名字的变量绑定在一起，以确保两者的同步性。
+    在这段代码中，用户在输入框中输入的数据名字称作query，会立刻作为列表迭代器（phone in phones | filter:query`）其过滤器的输入。当数据模型引起迭代器输入变化的时候，迭代器可以高效得更新DOM将数据模型最新的状态反映出来。
+    使用filter过滤器：filter函数使用query的值来创建一个只包含匹配query记录的新数组。</p>
+     <p>ngRepeat会根据filter过滤器生成的手机记录数据数组来自动更新视图。整个过程对于开发者来说都是透明的。</p>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <h3>2014-11-17</h3>
+                <p>如果你喜欢,请<a href="https://github.com/hjzheng/CUF_PPTs">star</a>我</p>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
