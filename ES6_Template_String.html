@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>ES6 String Template</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <style>
+        .authorArea {
+            margin-top: 100px !important;
+            text-align: right;
+            font-size: 90% !important;
+        }
+        .code {
+
+        }
+
+        section {
+            text-align: left;
+        }
+
+        pre {
+            margin: 0px !important;
+            font-size: 105% !important;
+        }
+
+        code {
+            font-family: cursive !important;
+        }
+
+        small {
+            font-size: .8em !important;
+            margin: 10px 0px !important;
+        }
+
+        ul {
+            margin: 10px 0px !important;
+            list-style: none !important;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>ES6 String Template</h2>
+            <div class="authorArea">
+                <p>By Hao Ju Zheng</p>
+                <p>github: <a href="https://github.com/hjzheng">https://github.com/hjzheng</a></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>什么是ES6 <a href="http://tc39wiki.calculist.org/es6/template-strings/">String Template</a></h2>
+            <p>
+                一种允许在字符串中嵌入的表达式的技术, 也被称为字符串插值, 该技术作为ES6规范，
+                很多浏览器都不支持, 据我了解的情况，FireFox新版本支持, <a href="https://twitter.com/addyosmani/status/541978036904554496?utm_source=javascriptweekly&utm_medium=email">Chrome也会马上会支持</a>。
+            </p>
+        </section>
+        <section>
+            <h2>使用ES6 String Template (1)</h2>
+            <small>Basic usage with an expression placeholder</small>
+            <pre><code data-trim contenteditable>
+ //Basic usage with an expression placeholder
+ var person = 'Hao Ju Zheng';
+ console.log(`Yo! My name is ${person}`);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>使用ES6 String Template (2)</h2>
+            <small>Expressions work just as well with object literals</small>
+            <pre><code data-trim contenteditable>
+ //Expressions work just as well with object literals
+ var user = {name: 'Zhen Ou Yun'};
+ console.log(`Thanks, ${user.name}`);
+ console.log(`The price is ${10*6} RMB`);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>使用ES6 String Template (3)</h2>
+            <small>Expression interpolation, One use is readable inline math</small>
+            <pre><code data-trim contenteditable>
+ //Expression interpolation, One use is readable inline math.
+ var a = 50;
+ var b = 100;
+ console.log(`The number is ${a + b} and not ${ 2 * a +b }`);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>使用ES6 String Template (3)</h2>
+            <small>Multi-line strings without needing \n\</small>
+            <pre><code data-trim contenteditable>
+ //Multi-line strings without needing \n\
+ console.log(`string text line 1
+ string text line 2`);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>使用ES6 String Template (4)</h2>
+            <small>Function inside expressions</small>
+            <pre><code data-trim contenteditable>
+ //Function inside expressions
+ function fn() {return "result"}
+ console.log(`foo ${fn()} bar`);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>ES6 String Template用途</h2>
+            <ul>
+                <li>国际化</li>
+                <li>自定义html模板</li>
+                <li>多行字符串</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>ES6 String Template 如何兼容其他浏览器?</h3>
+        </section>
+
+        <section>
+           <h2>使用multiline和EJS</h2>
+           <ul>
+               <li><a href="https://github.com/sindresorhus/multiline">multiline</a></li>
+               <li><a href="https://github.com/tj/ejs">EJS</a></li>
+           </ul>
+        </section>
+
+        <section>
+            <h2><a href="https://github.com/hjzheng/ES6-Template-String">ES6-Template-String</a></h2>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ##扩展阅读：
+
+                - [EJS][0]
+                - [multiline][1]
+                - [ES6-Template-String][3]
+                - [ES6 Features][2]
+                - [ECMAScript 6入门][4]
+
+                [0]:https://github.com/tj/ejs
+                [1]:https://github.com/sindresorhus/multiline
+                [2]:https://github.com/lukehoban/es6features#template-strings
+                [3]:https://github.com/hjzheng/ES6-Template-String
+                [4]:http://es6.ruanyifeng.com/
+            </script>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <h3>2014-12-15</h3>
+                <p>如果你喜欢,请<a href="https://github.com/hjzheng/CUF_PPTs">star</a>我</p>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
