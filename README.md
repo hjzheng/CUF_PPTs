@@ -17,6 +17,7 @@ CUF_PPTs
 - [响应式设计][7] 
 - [前端技术介绍(未完成)][8]
 - [ES6 String Template][9]
+- [CSS 选择器][10]
 
 **使用方式:**
 
@@ -38,3 +39,4 @@ git clone https://github.com/hjzheng/CUF_PPTs
 [7]:http://get-set.cn/CUF_PPTs/%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1.html#/
 [8]:http://get-set.cn/CUF_PPTs/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D.html#/
 [9]:http://get-set.cn/CUF_PPTs/ES6_Template_String.html#/
+[10]:http://get-set.cn/CUF_PPTs/CSS_Selector.html
