@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>CSS 选择器</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <style>
+        .authorArea {
+            margin-top: 100px !important;
+            text-align: right;
+            font-size: 90% !important;
+        }
+        .code {
+
+        }
+
+        section {
+            text-align: left;
+        }
+
+        pre {
+            margin: 0px !important;
+            font-size: 105% !important;
+        }
+
+        code {
+            font-family: cursive !important;
+        }
+
+        small {
+            font-size: .8em !important;
+            margin: 10px 0px !important;
+        }
+
+        ul {
+            margin: 10px 0px !important;
+            list-style: none !important;
+        }
+
+        .box {
+            background: #ccc;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .shadow {
+            position: relative;
+            max-width: 270px;
+            box-shadow: 0px 1px 4px rgba(0,0,0,0.3),
+            0px 0px 20px rgba(0,0,0,0.1) inset;
+        }
+
+        .shadow::before,
+        .shadow::after {
+            content:"";
+            position:absolute;
+            z-index:-1;
+        }
+
+        .shadow::before,
+        .shadow::after {
+            content:"";
+            position:absolute;
+            z-index:-1;
+            bottom:15px;
+            left:10px;
+            width:50%;
+            height:20%;
+        }
+
+        .shadow::before,
+        .shadow::after {
+            content:"";
+            position:absolute;
+            z-index:-1;
+            bottom:15px;
+            left:10px;
+            width:50%;
+            height:20%;
+            box-shadow:0 15px 10px #ddd;
+            transform:rotate(-6deg);
+        }
+
+        .shadow::after{
+            right:10px;
+            left:auto;
+            transform:rotate(6deg);
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>CSS 选择器</h2>
+            <div class="authorArea">
+                <p>By Hao Ju Zheng</p>
+                <p>github: <a href="https://github.com/hjzheng">https://github.com/hjzheng</a></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>什么是CSS选择器?</h2>
+        </section>
+
+        <section>
+            <h2>CSS语法</h2>
+            <img src="img/css_s1.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>CSS语法</h2>
+            <img src="img/css_s2.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>CSS语法</h2>
+            <img src="img/css_s3.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>CSS语法</h2>
+            <img src="img/css_s4.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>CSS语法</h2>
+            <img src="img/css_s5.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>CSS选择器分类</h2>
+            <ul>
+                <li>基本选择器</li>
+                <li>属性选择器</li>
+                <li>层次选择器</li>
+                <li>伪类选择器</li>
+                <li>伪元素选择器</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>基本选择器</h2>
+            <small>Example:
+                <a href="http://jsfiddle.net/hjzheng/neLh3cda/1/">http://jsfiddle.net/hjzheng/neLh3cda/1/</a>
+            </small>
+            <img src="img/css_select1.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>属性选择器</h2>
+            <small>Example:
+                <a href="http://jsfiddle.net/hjzheng/1ysy6rzb/">http://jsfiddle.net/hjzheng/1ysy6rzb/</a>
+            </small>
+            <img src="img/css_select2.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>层次选择器</h2>
+            <small>Example:
+                <a href="http://jsfiddle.net/hjzheng/rc4jrcau/">http://jsfiddle.net/hjzheng/rc4jrcau/</a>
+            </small>
+            <img src="img/css_select3.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>伪类选择器:动态伪类选择器</h2>
+            <small>Example:
+                <a href="http://jsfiddle.net/hjzheng/L7z9e4ae/">http://jsfiddle.net/hjzheng/L7z9e4ae/</a>
+            </small>
+            <img src="img/css_select4.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>伪类选择器:UI元素伪类状态选择器</h2>
+            <small>Example:
+                <a href="http://jsfiddle.net/hjzheng/9sLcht0m/">http://jsfiddle.net/hjzheng/9sLcht0m/</a>
+            </small>
+            <img src="img/css_select5.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>伪类选择器:目标伪类选择器</h2>
+            <small>
+                Example:<a href="http://jsfiddle.net/hjzheng/vdvucuhd/1/">http://jsfiddle.net/hjzheng/vdvucuhd/1/</a>
+            </small>
+            <img src="img/css_select8.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>伪类选择器:否定伪类选择器</h2>
+            <small>
+                Example:<a href="http://jsfiddle.net/hjzheng/neLh3cda/1/">http://jsfiddle.net/hjzheng/neLh3cda/1/</a>
+            </small>
+            <img src="img/css_select7.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>伪类选择器:结构伪类选择器</h2>
+            <small>Example:
+                <a href="http://jsfiddle.net/hjzheng/fnvgbe9n/">http://jsfiddle.net/hjzheng/fnvgbe9n/</a>
+            </small>
+            <img src="img/css_select6-1.png" class="box shadow">
+        </section>
+
+        <section>
+            <h2>伪类选择器:结构伪类选择器</h2>
+            <small>Example:
+                <a href="http://jsfiddle.net/hjzheng/fnvgbe9n/">http://jsfiddle.net/hjzheng/fnvgbe9n/</a>
+            </small>
+            <img src="img/css_select6-2.png" class="box shadow">
+        </section>
+
+        <section>
+             <h2>伪元素选择器</h2>
+             <small>Example:
+                 <a href="http://jsfiddle.net/hjzheng/Lpjz3fpj/">http://jsfiddle.net/hjzheng/Lpjz3fpj/</a>
+             </small>
+             <img src="img/css_select9.png" class="box shadow">
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ## 扩展阅读
+
+                - [CSS 选择器][0]
+                - [CUF_meeting_knowledge_share][1]
+
+                [0]:https://github.com/hjzheng/CUF_meeting_knowledge_share/issues/3
+                [1]:https://github.com/hjzheng/CUF_meeting_knowledge_share
+            </script>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <div class="authorArea">
+                    <p>2014-12-15</p>
+                    <p>如果你喜欢,请<a href="https://github.com/hjzheng/CUF_PPTs">star</a>我</p>
+                </div>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
