@@ -3,7 +3,7 @@ CUF_PPTs
 
 **CUF_meeting_knowledge_share PPTs**
 
-用于存放 CUF_meeting_knowledge_share PPTs
+用于存放 [CUF_meeting_knowledge_share][11] PPTs
 
 下面的PPT都是基于[reveal.js][0]实现的
 
@@ -40,3 +40,4 @@ git clone https://github.com/hjzheng/CUF_PPTs
 [8]:http://get-set.cn/CUF_PPTs/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D.html#/
 [9]:http://get-set.cn/CUF_PPTs/ES6_Template_String.html#/
 [10]:http://get-set.cn/CUF_PPTs/CSS_Selector.html
+[11]:https://github.com/hjzheng/CUF_meeting_knowledge_share
