@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="utf-8">
+    <title>Learn Gulp</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style>
+        .authorArea {
+            margin-top: 100px !important;
+            text-align: right;
+            font-size: 90% !important;
+        }
+        .code {
+
+        }
+
+        section {
+            text-align: left;
+        }
+
+        pre {
+            margin: 0px !important;
+            font-size: 105% !important;
+        }
+
+        code {
+            font-family: monospace !important;
+        }
+
+        small {
+            font-size: .8em !important;
+            margin: 10px 0px !important;
+        }
+
+        ul {
+            margin: 10px 0px !important;
+            list-style: none !important;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section>
+            <h2>Learn Gulp</h2>
+            <div class="authorArea">
+                <p>By Hao Ju Zheng</p>
+                <p>github: <a href="https://github.com/hjzheng">https://github.com/hjzheng</a></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>什么是 Gulp ?</h2>
+            <h3>The streaming build system</h3>
+            <img src="img/gulp1.png" height="232" width="216">
+        </section>
+        <section>
+            <h2>Streams</h2>
+            <p class="fragment">
+                "We should have some ways of connecting programs like garden hose--screw in
+another segment when it becomes necessary to massage data in
+another way. This is the way of IO also."
+            </p>
+            <p class="fragment"> -- Doug McIlroy. October 11, 1964</p>
+        </section>
+
+        <section>
+            <section>
+                <h2>为什么使用 Streams</h2>
+                <ul class="fragment">
+                    <li>性能好</li>
+                    <li>简单易用</li>
+                </ul>
+            </section>
+            <section>
+                <h3>copy文件，并将文件中小写字母转成大写</h3>
+                <pre><code data-trim contenteditable>
+//Stream Way
+var fs = require('fs');
+var through  = require('through2');
+var stream = through(write, end);
+
+function write(buffer, encoding, next){
+    this.push(buffer.toString().toUpperCase());
+    next();
+}
+
+function end(done){
+   done();
+}
+
+function copy(src, target) {
+    fs.createReadStream(src).pipe(stream).pipe(fs.createWriteStream(target));
+}
+
+console.time('stream way');
+copy('./test.txt', './test2.txt');
+console.timeEnd('stream way');
+                </code></pre>
+            </section>
+            <section>
+                <pre><code data-trim contenteditable>
+//Normal Way
+var fs = require('fs');
+
+function copy(src, target) {
+    var content = fs.readFileSync(src).toString().toUpperCase();
+    fs.writeFileSync(target, content);
+}
+
+console.time('normal way');
+copy('./test.txt', './test1.txt');
+console.timeEnd('normal way');
+                </code></pre>
+            </section>
+        </section>
+    <section>
+        <section>
+            <h3>Gulp has only 5 functions you need to learn </h3>
+        </section>
+
+        <section>
+            <h2>gulp.task(name, fn)</h2>
+            <small>定义task</small>
+            <pre><code data-trim contenteditable>
+var gulp = require('gulp');
+
+gulp.task('test', function() {
+    console.log('hello test!')
+});
+
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>gulp.run(tasks...)</h2>
+            <small>运行task</small>
+            <pre><code data-trim contenteditable>
+gulp.run(["miniCSS"]);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>gulp.watch(glob, fn)</h2>
+            <small>监控变化</small>
+            <pre><code data-trim contenteditable>
+ gulp.watch(['./**/*.css'], ['miniCSS']);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>gulp.src(glob)</h2>
+            <small>输入</small>
+            <pre><code data-trim contenteditable>
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+
+gulp.task('default', function() {
+    gulp.src('src/*.js')
+        .pipe(uglify())   //压缩js
+        .pipe(gulp.dest('dist'))
+});
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>gulp.dest(folder)</h2>
+            <small>输出</small>
+            <pre><code data-trim contenteditable>
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+
+gulp.task('default', function() {
+    gulp.src('src/*.js')
+        .pipe(uglify())   //压缩js
+        .pipe(gulp.dest('dist'))
+});
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>恭喜，你已经是gulp专家了！！！</h2>
+        </section>
+    </section>
+
+    <section>
+        <section>
+            <h2>Gulp可以帮我们做什么</h2>
+            <ul class="fragment">
+                <li>Minification</li>
+                <li>Concat</li>
+                <li>Sass to CSS</li>
+                <li>Injecting files into html</li>
+                <li>Code analysis</li>
+                <li>Caching Angular templates</li>
+                <li>Transpiler</li>
+                <li>Testing</li>
+                <li>Sync Code</li>
+            </ul>
+        </section>
+        <section>
+            <img src="img/gulp2.png" height="600" width="1000">
+        </section>
+    </section>
+
+    <section>
+        <section>
+            <h2>Gulp VS Grunt</h2>
+        </section>
+
+        <section>
+            <img src="img/gulp4.png" height="500" width="1000">
+        </section>
+        <section>
+            <img src="img/gulp5.png" height="542" width="1000">
+        </section>
+        <section>
+            <img src="img/gulp3.png" height="512" width="1000">
+        </section>
+    </section>
+
+        <section>
+            <h2><a href="https://github.com/Platform-CUF/use-gulp">关于 Gulp 更多内容</a></h2>
+        </section>
+
+        <section>
+            <section>
+                <h2>谢谢观赏</h2>
+                <div class="authorArea">
+                    <p>2016-1-27</p>
+                    <p>如果你喜欢,请<a href="https://github.com/hjzheng/CUF_PPTs">star</a>我</p>
+                </div>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+        progress: true,
+        math: {
+            // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ]
+    });
+
+</script>
+</body>
+</html>
