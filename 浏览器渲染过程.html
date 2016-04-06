@@ -68,7 +68,7 @@
                     <section>
                         <h2>layout和paint的区别</h2>
                         <p class="fragment">
-                            <b style="color: #eee">Layout</b> -- 当窗口尺寸被修改（resize)，发生滚动操作，或position、display、width、height等与元素位置相关的样式属性值被更新时触发布局过程。在布局过程中由于要计算所有元素的位置信息，更加会降低页面加载性能。在WebKit引擎中把布局过程称为Layout过程，在Gecko引擎中把绘制过程称为Reflow过程。
+                            <b style="color: #eee">Layout</b> -- 当窗口尺寸被修改（resize)，发生滚动操作，或position、display、width、height等与元素位置相关的样式属性值被更新时触发布局过程。在布局过程中由于要计算所有元素的位置信息，更加会降低页面加载性能。在WebKit引擎中把布局过程称为Layout过程，在Gecko引擎中把布局过程称为Reflow过程。
                         </p>
                         <p class="fragment">
                             <b style="color: #eee">Paint</b> -- 当color、background-color、visiblity、outline等与视觉相关的样式属性值被更新时触发绘制过程。在绘制过程中由于要重计算元素的视觉信息，所以会降低页面加载性能。在WebKit引擎中把绘制过程称为Painting过程，在Gecko引擎中把绘制过程称为Repaint过程。
