@@ -18,6 +18,8 @@ CUF_PPTs
 - [前端技术介绍(未完成)][8]
 - [ES6 String Template][9]
 - [CSS 选择器][10]
+- [我是如何学习前端技术][12]
+- [学习Gulp][13]
 
 **使用方式:**
 
@@ -41,3 +43,5 @@ git clone https://github.com/hjzheng/CUF_PPTs
 [9]:http://get-set.cn/CUF_PPTs/ES6_Template_String.html#/
 [10]:http://get-set.cn/CUF_PPTs/CSS_Selector.html
 [11]:https://github.com/hjzheng/CUF_meeting_knowledge_share
+[12]:http://get-set.cn/CUF_PPTs/how-to-learn.html#/
+[13]:http://get-set.cn/CUF_PPTs/learn-gulp.html#/
